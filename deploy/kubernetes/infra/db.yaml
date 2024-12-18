@@ -20,12 +20,12 @@ spec:
       containers:
       - name: order-db
         image: bitnami/mariadb:latest 
-        imagePullPolicy: Never
+        # imagePullPolicy: Never
         ports:
         - containerPort: 3306
           name: order-db
         env:
-          - name: MYSQL_ROOT_PASSWORD
+          - name: MARIADB_ROOT_PASSWORD
             value: s3cr3t
         volumeMounts:
         - name: mysql-initdb
@@ -43,7 +43,8 @@ metadata:
   # namespace: default
 data:
   initdb.sql: |
-    CREATE DATABASE IF NOT EXISTS payments;
+    CREATE DATABASE IF NOT EXISTS payment;
+    CREATE DATABASE IF NOT EXISTS order;
     CREATE DATABASE IF NOT EXISTS orders;
 ---
 # https://kubernetes.io/docs/concepts/services-networking/service/

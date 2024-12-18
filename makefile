@@ -25,7 +25,7 @@ infra:
 	docker run -p 3306:3306 -e MYSQL_ROOT_PASSWORD=verysecretpass -e MYSQL_DATABASE=order mysql
 
 connect-db:
-	# docker exec -it $(service)-mysql mysqld -uroot -pverysecretpass order
+	# docker exec -it $(service)-mysql mysqld -u root -p verysecretpass order
 
 deploy-docker:
 	docker build --build-arg servicename=order -t order-service:latest .

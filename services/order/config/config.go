@@ -15,6 +15,7 @@ func GetAppPort() string {
 
 func GetDataSourceUrl() string {
 	dataSourceUrl := os.Getenv("DaraSourceUrl")
+	fmt.Println("*****", os.Getenv("DaraSourceUrl"))
 	if dataSourceUrl == "" {
 		return "user:password@tcp(172.21.0.2:3306)/order"
 	}

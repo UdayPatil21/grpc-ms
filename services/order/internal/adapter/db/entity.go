@@ -2,15 +2,20 @@ package db
 
 import (
 	"grpc-ms/services/order/internal/application/core/domain"
+	"time"
 
 	"gorm.io/gorm"
 )
 
 type Order struct {
 	gorm.Model
+	ID         uint `gorm:"primarykey"`
 	CustomerID int64
 	Status     string
 	OrderItems OrderItems
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
+	DeletedAt  time.Time `gorm:"index"`
 }
 
 func (o *Order) FromOrder(order domain.Order) {
